@@ -7,7 +7,7 @@ https://fr.wikipedia.org/wiki/Test_de_primalit%C3%A9_de_Miller-Rabin
 """
 
 
-def millerRabinWitness(a, n):
+def millerrabinwitness(a, n):
     # n must be => than 3 and a > 1
     if n < 3 or a <= 1:
         return False
@@ -34,11 +34,11 @@ def millerrabin(n, k=10):
         return False
     for _ in range(k):
         a = randint(2, n - 1)
-        if millerRabinWitness(a, n):
+        if millerrabinwitness(a, n):
             return False
     return True
 
 
-print(millerrabin(1021));
-print(millerrabin(4));
+print(millerrabin(1021))
+print(millerrabin(4))
 
