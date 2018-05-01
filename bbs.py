@@ -11,16 +11,16 @@ class BBS:
         self.q = q
         self.seed = seed
         self.xn = seed
-        self.mfactor = p * q
+        self.m_factor = p * q
 
     """
     generation of bits string, n is the lenght of the number to generate in bits
     """
 
-    def getrandom(self, n):
+    def get_random(self, n):
         out = ''
         for i in range(n):
-            self.xn = pow(self.xn, 2, self.mfactor)
+            self.xn = pow(self.xn, 2, self.m_factor)
             out += str(self.xn % 2)
         return out
 
@@ -28,10 +28,6 @@ class BBS:
     The same as above but return the value as an integer
     """
 
-    def getrandomint(self, n):
-        return int(self.getrandom(n), 2)
+    def get_random_int(self, n):
+        return int(self.get_random(n), 2)
 
-
-bbs = BBS(16217, 15629, 5081)
-for i in range(100):
-    print(bbs.getrandomint(10))

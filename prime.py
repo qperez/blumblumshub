@@ -6,8 +6,7 @@ Implementation based on the following wikipedia page :
 https://fr.wikipedia.org/wiki/Test_de_primalit%C3%A9_de_Miller-Rabin
 """
 
-
-def millerrabinwitness(a, n):
+def miller_rabin_witness(a, n):
     # n must be => than 3 and a > 1
     if n < 3 or a <= 1:
         return False
@@ -29,16 +28,12 @@ def millerrabinwitness(a, n):
     return True  # n is definitely composite
 
 
-def millerrabin(n, k=10):
+def miller_rabin(n, k=100):
     if n % 2 == 0:
         return False
     for _ in range(k):
         a = randint(2, n - 1)
-        if millerrabinwitness(a, n):
+        if miller_rabin_witness(a, n):
             return False
     return True
-
-
-print(millerrabin(1021))
-print(millerrabin(4))
 
