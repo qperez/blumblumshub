@@ -6,6 +6,7 @@ Implementation based on the following wikipedia page :
 https://fr.wikipedia.org/wiki/Test_de_primalit%C3%A9_de_Miller-Rabin
 """
 
+
 def miller_rabin_witness(a, n):
     # n must be => than 3 and a > 1
     if n < 3 or a <= 1:
@@ -36,4 +37,3 @@ def miller_rabin(n, k=100):
         if miller_rabin_witness(a, n):
             return False
     return True
-

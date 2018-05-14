@@ -1,6 +1,8 @@
 from random import randint
 from bbs import BBS
 import prime
+import sys
+
 
 class BBS_Generator:
     def __init__(self, max, n):
@@ -30,6 +32,7 @@ class BBS_Generator:
         for _ in range(nb_to_generate):
             self.numbers_gen.append(bbs.get_random_int(self.n))
         print("** End generation BBS **")
+        del p, q, seed, bbs
 
     def print(self):
         i = 0
@@ -38,8 +41,19 @@ class BBS_Generator:
             i += 1
 
 
-#Max prime numbers = 50000 , generate a number on 10 bits
-bbs = BBS_Generator(1000000, 64)
-#Generate 100 random numbers
-bbs.generate_numbers(100)
-bbs.print()
+def main():
+    # Command line argument
+    # [1] ==> max number where the prime numbers are chosen
+    # [2] ==> length in bits for the generated number
+    # [3] ==> number of random number to generate
+    max_prime_number_arg = int(sys.argv[1])
+    nb_bits_output = int(sys.argv[2])
+    nb_numbers_to_generate = int(sys.argv[3])
+
+    bbs = BBS_Generator(max_prime_number_arg, nb_bits_output)
+    bbs.generate_numbers(nb_numbers_to_generate)
+    bbs.print()
+
+
+if __name__ == "__main__":
+    main()
